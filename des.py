@@ -55,7 +55,7 @@ class Model:
         for index, row in g.appt_book.iterrows():
             wait_time = row['collect_time'] - self.env.now 
 
-            self.env.timeout(wait_time)
+            yield self.env.timeout(wait_time)
             no_patients=row['no_patients']
             for i in range(no_patients):
                 # Increment patient counter
